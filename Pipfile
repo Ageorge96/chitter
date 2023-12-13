@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 psycopg = "*"
 pytest = "*"
+flask = "*"
+playwright = "*"
+pytest-playwright = "*"
+pytest-xprocess = "*"
 
 [dev-packages]
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chitter</title>
+    </head>
+    <body style="background-color: #496ca3;">
+        <h1>Chitter Home</h1>
+
+        <a href="/make_post" style="size: 24sp; background-color: black; padding: 1svb;">Make a Post</a>
+
+        <h2>Timeline</h2>
+        {% for peep in peeps %}
+            <p style="background-color: black; color: aquamarine; padding: 1dvb;">
+                <h4>{{peep.content}}</h4>
+            </p>
+        {% endfor %}
+    </body>
+</html>

@@ -52,11 +52,70 @@ Records  | Properties
 peeps    | content, time
 accounts | email, username, password
 
+
+1. Can one peep have many accounts? No
+2. Can one account have many peeps? Yes
+
+-> Therefore,
+-> An account HAS MANY peeps
+-> An peep BELONGS TO an account
+
+-> Therefore, the foreign key is on the peep table.
+
+
 Table: peeps
 id: serial
 content: text
 time_posted: datetime
+user_id
 
 Table: accounts
 id: serial
-email: 
+email: text
+username: varchar(16)
+password:text
+
+
+
+
+
+# SQL
+
+CREATE TABLE peeps (
+    id SERIAL PRIMARY KEY,
+    content VARCHAR(280),
+    time_posted DATETIME,
+    user_id VARCHAR(MAX)
+)
+
+CREATE TABLE accounts (
+    id SERIAL PRIMARY KEY,
+    email TEXT,
+    username VARCHAR(16),
+    password TEXT
+)
+
+# Example tests
+
+
+# ////////////////
+# ////////////////
+
+# Routes
+
+#home page 
+(index.html)
+'/'
+
+#sign up page
+(sign_up.html)
+'/sign_up
+
+#login page
+(login.html)
+'/login'
+
+#create post
+(post.html)
+'/make_post'
+
