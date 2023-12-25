@@ -1,5 +1,5 @@
 CREATE SEQUENCE IF NOT EXISTS accounts_id_seq;
-CREATE TABLE accounts (
+CREATE TABLE IF NOT EXISTS accounts (
     id SERIAL PRIMARY KEY,
     email TEXT,
     username VARCHAR(16),
@@ -7,7 +7,7 @@ CREATE TABLE accounts (
 );
 
 CREATE SEQUENCE IF NOT EXISTS peeps_id_seq;
-CREATE TABLE peeps (
+CREATE TABLE IF NOT EXISTS peeps (
     id SERIAL PRIMARY KEY,
     content VARCHAR(280),
     time_posted TIMESTAMP,

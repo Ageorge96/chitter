@@ -1,0 +1,15 @@
+.peep_box {
+    width: 800px;
+    height: 150px;
+    border: 1px solid black;
+    margin: auto;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.timestamp { 
+    font-size: x-small;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}

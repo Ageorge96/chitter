@@ -14,7 +14,6 @@ class DatabaseConnection:
     # to localhost and select the database name given in argument.
     def connect(self):
         try:
-            print('here')
             self.connection = psycopg.connect(
                 f"postgresql://localhost/{self._database_name()}",
                 row_factory=dict_row

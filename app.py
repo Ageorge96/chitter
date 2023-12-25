@@ -8,38 +8,38 @@ app = Flask(__name__)
 
 
 
-# ///// GET Routes ////
 @app.route('/', methods=['GET', 'POST'])
 def get_index():
 
     connection = get_flask_database_connection(app)
     repo = PeepRepository(connection)
 
-    if request.method == 'POST':
-        content = request.form['content']
-        #time_posted = request.form['time_posted']
-        time_posted = "2023-11-01 15:25:43"
+    
+    peeps = repo.all(True)
 
-        peep = Peep(None, content, time_posted, None)
-        repo.create(peep)
-        peeps = repo.all()
-
-        return redirect('/')
-    else:
-        peeps = repo.all()
-
-        return render_template('index.html', peeps=peeps)
+    return render_template('index.html', peeps=peeps)
+    
+    
 
 @app.route('/sign_up')
 def get_sign_up():
     return render_template('sign_up.html')
 
-@app.route('/make_post')
+@app.route('/make_post', methods=['GET', 'POST'])
 def get_make_post():
-    return render_template('make_post.html')
 
+    connection = get_flask_database_connection(app)
+    repo = PeepRepository(connection)
 
+    if request.method == 'POST':
+        content = request.form['content']
 
+        peep = Peep(None, content, datetime.now(), None)
+        repo.create(peep)
+
+        return redirect('/')
+    else:
+        return render_template('make_post.html')
 
 
 

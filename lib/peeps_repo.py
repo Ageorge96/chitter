@@ -5,8 +5,12 @@ class PeepRepository:
     def __init__(self, connection):
         self._connection = connection
 
-    def all(self):
-        rows = self._connection.execute('SELECT * FROM peeps')
+    def all(self, reverse=False):
+        
+        if reverse:
+            rows = self._connection.execute('SELECT * FROM peeps ORDER BY id DESC')
+        else:
+            rows = self._connection.execute('SELECT * FROM peeps')
 
         peeps = []
 
@@ -17,4 +21,4 @@ class PeepRepository:
         return peeps
     
     def create(self, peep):
-        self._connection.execute('INSERT INTO peeps (content, time_posted, user_id) VALUES (%s, %s, %s)', [peep.content, peep.time, peep.user_id])
+        self._connection.execute('INSERT INTO peeps (content, time_posted, user_id) VALUES (%s, %s, %s)', [peep.content, peep.time_of_post, peep.user_id])
