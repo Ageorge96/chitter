@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS peeps;
 DROP SEQUENCE IF EXISTS peeps_id_seq;
-DROP TABLE IF EXISTS accounts;
-DROP SEQUENCE IF EXISTS accounts_id_seq;
+DROP TABLE IF EXISTS userdata;
+DROP SEQUENCE IF EXISTS userdata_id_seq;
 
 
-CREATE SEQUENCE IF NOT EXISTS accounts_id_seq;
-CREATE TABLE accounts (
+CREATE SEQUENCE IF NOT EXISTS userdata_id_seq;
+CREATE TABLE userdata (
     id SERIAL PRIMARY KEY,
     email TEXT,
     username VARCHAR(16),
@@ -19,7 +19,7 @@ CREATE TABLE peeps (
     time_posted TIMESTAMP,
     user_id SMALLINT,
     CONSTRAINT fk_peep FOREIGN KEY (user_id)
-        REFERENCES accounts(id)
+        REFERENCES userdata(id)
         ON DELETE CASCADE
 );
 

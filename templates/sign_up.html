@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block main %}
+    <div class="login_sign_up_dialog" >
+        <form action="/sign_up" method="post" 
+            onsubmit="return newAccountValidation()" style="margin-top: 10px;">
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <input class="" type="text" name="username" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" style="margin-right: 33px;">Email</label>
+                <input class="" type="text" name="email" id="email" required >
+            </div>
+            <div class="mb-3">
+                <label for="password" style="margin-right: 2px;">Password</label>
+                <input class="" type="text" name="password" id="password" required>
+            </div>
+            <div class="mb-3">
+                <span id="error">
+                    <label for="password_req">Password must include:</label>
+                    <ul id="password_req">
+                    <li style="text-align: start;">At least 8 characters</li>
+                    <li style="text-align: start;">A lower case letter, uppercase letter, number and special character (?!.,@£$%&*#;:)</li>
+                </ul>
+                </span>
+            </div>
+                <input type="submit" value="Sign up">
+        </form>
+    </div>
+
+    <script>
+        function newAccountValidation() {
+
+            //validate username and email
+
+            switch (passwordVerification()) {
+                case 0:
+                    return true;
+                case 1:
+                    var error = document.getElementById("error");
+                    error.textContent = "Password must have at least 8 characters";
+                    error.style.color = "red";
+                    return false;
+                case 2:
+                    var error = document.getElementById("error");
+                    error.textContent = "Password must include an uppercase letter, lowercase letter, number and special character";
+                    error.style.color = "red";
+                    return false;
+            }
+        }
+
+        function passwordVerification() {
+            const password = document.getElementById("password").value;
+
+            if (password.length < 8) {
+                return 1;
+            }
+
+            const match = password.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[?!.,@£$%&*#;:])/);
+
+            if (match) {
+                return 0;
+            } else {
+                return 2;
+            }
+        }
+
+    </script>
+{% endblock %}

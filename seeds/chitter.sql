@@ -1,5 +1,5 @@
-CREATE SEQUENCE IF NOT EXISTS accounts_id_seq;
-CREATE TABLE IF NOT EXISTS accounts (
+CREATE SEQUENCE IF NOT EXISTS userdata_id_seq;
+CREATE TABLE IF NOT EXISTS userdata (
     id SERIAL PRIMARY KEY,
     email TEXT,
     username VARCHAR(16),
@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS peeps (
     time_posted TIMESTAMP,
     user_id SMALLINT,
     CONSTRAINT fk_peep FOREIGN KEY (user_id)
-        REFERENCES accounts(id)
+        REFERENCES userdata(id)
         ON DELETE CASCADE
 );

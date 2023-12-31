@@ -21,10 +21,7 @@ class Peep:
             datetime_format = datetime.strptime(time_of_post, "%Y-%m-%d %H:%M:%S")
 
             self._time_of_post = datetime_format.strftime(dt_format)
-            #print(self._time_of_post)
-            #print(type(self._time_of_post))
         else:
-            print(type(time_of_post))
             self._time_of_post = time_of_post.strftime(dt_format)
 
     def __eq__(self, other):

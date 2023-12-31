@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <div class="login_sign_up_dialog">
+        <form action="/login" method="post" >
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <input class="" type="text" name="username" id="username" placeholder="Enter your username or email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input class="" type="text" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <input type="submit" value="login">
+        </form>
+        <div class="mb-3" style="margin-top: 10px;">
+            <a  href="/sign_up" >Don't have an account? Register here</a>
+        </div>
+    </div>
+    
+{% endblock %}
